@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
 import './styles.css';
+import {mask, unMask} from 'remask';
+import InputMask from '../../components/mask';
 // import {Container, ContainerForm, TextFromInput} from './styles';
 
 const Home = () => {
@@ -7,10 +9,17 @@ const Home = () => {
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [birth, setBirth] = useState('');
+  const [cpf, setCpf] = useState('');
 
   const handleSubmit = () => {
     console.log("Ok");
-    alert(`Nome: ${name}`);
+    alert(`Nome: ${cpf}`);
+  }
+
+  const handleOnChange = (ev) => {
+    // console.log(ev);
+    setBirth(mask(unMask(ev.target.value), ['99/99/9999']))
   }
 
   return(
@@ -24,6 +33,7 @@ const Home = () => {
                 placeholder="First Name"
                 type="text"
                 name="firstName"
+                // onChange={(name) => setName(name.target.value)}
                 onChange={(name) => setName(name.target.value)}
                 value={name}
                 noValidate
@@ -37,6 +47,29 @@ const Home = () => {
                 name="lastName"
                 onChange={(lastName) => setLastName(lastName.target.value)}
                 value={lastName}
+                noValidate
+              />
+            </div>
+            <div className="birthDate">
+              <label htmlFor="birthDate">Birth</label>
+              <input
+                placeholder="dd/mm/yyyy"
+                type="text"
+                name="birthDate"
+                onChange={handleOnChange}
+                value={birth}
+                noValidate
+              />
+            </div>            
+            <div className="cpf">
+              <label htmlFor="cpf">CPF</label>
+              <InputMask
+                placeholder="000.000.000-00"
+                // type="text"
+                mask={["999.999.999-99"]}
+                name="cpf"
+                onChange={setCpf}
+                value={cpf}
                 noValidate
               />
             </div>

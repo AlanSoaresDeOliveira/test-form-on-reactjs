@@ -72,15 +72,19 @@ input.error {
   display: relative;
 }
 
-.firstName {
+.firstName,
+.birthDate {
   margin-right: 1%;
 }
 
-.lastName {
+.lastName,
+.cpf {
   margin-left: 1%;
 }
 
 .firstName,
+.birthDate,
+.cpf,
 .lastName,
 .email,
 .password {
@@ -90,6 +94,8 @@ input.error {
 }
 
 .firstName,
+.birthDate,
+.cpf,
 .lastName {
   width: 49%;
 }
