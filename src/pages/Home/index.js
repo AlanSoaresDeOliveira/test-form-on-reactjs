@@ -1,8 +1,6 @@
 import React, {useState} from 'react';
 import './styles.css';
-import {mask, unMask} from 'remask';
 import InputMask from '../../components/mask';
-// import {Container, ContainerForm, TextFromInput} from './styles';
 
 const Home = () => {
   const [name, setName] = useState('');
@@ -14,12 +12,7 @@ const Home = () => {
 
   const handleSubmit = () => {
     console.log("Ok");
-    alert(`Nome: ${cpf}`);
-  }
-
-  const handleOnChange = (ev) => {
-    // console.log(ev);
-    setBirth(mask(unMask(ev.target.value), ['99/99/9999']))
+    alert(`CPF: ${cpf} Data: ${birth}`);
   }
 
   return(
@@ -33,7 +26,6 @@ const Home = () => {
                 placeholder="First Name"
                 type="text"
                 name="firstName"
-                // onChange={(name) => setName(name.target.value)}
                 onChange={(name) => setName(name.target.value)}
                 value={name}
                 noValidate
@@ -52,11 +44,11 @@ const Home = () => {
             </div>
             <div className="birthDate">
               <label htmlFor="birthDate">Birth</label>
-              <input
+              <InputMask
                 placeholder="dd/mm/yyyy"
-                type="text"
+                mask={['99/99/9999']}
                 name="birthDate"
-                onChange={handleOnChange}
+                onChange={setBirth}
                 value={birth}
                 noValidate
               />
@@ -65,8 +57,7 @@ const Home = () => {
               <label htmlFor="cpf">CPF</label>
               <InputMask
                 placeholder="000.000.000-00"
-                // type="text"
-                mask={["999.999.999-99"]}
+                mask={['999.999.999-99']}
                 name="cpf"
                 onChange={setCpf}
                 value={cpf}
