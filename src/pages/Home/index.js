@@ -6,13 +6,22 @@ const Home = () => {
   const [name, setName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
+  const [address, setAddress] = useState('');
+  const [deliveryNumber, setDeliveryNumber] = useState('');
+  const [sex, setSex] = useState('');
   const [password, setPassword] = useState('');
   const [birth, setBirth] = useState('');
   const [cpf, setCpf] = useState('');
 
   const handleSubmit = () => {
     console.log("Ok");
-    alert(`CPF: ${cpf} Data: ${birth}`);
+    alert(`CPF: ${cpf} Data: ${birth} Sex: ${sex}` );
+  }
+
+  const setGender = (sex) => {
+    console.log(sex.target.value);
+    setSex(sex.target.value);
+
   }
 
   return(
@@ -20,6 +29,7 @@ const Home = () => {
         <div className="form-wrapper">
           <h1>Create Account</h1>
           <form onSubmit={handleSubmit} >
+
             <div className="firstName">
               <label htmlFor="firstName">First Name</label>
               <input
@@ -31,6 +41,7 @@ const Home = () => {
                 noValidate
               />
             </div>
+
             <div className="lastName">
               <label htmlFor="lastName">Last Name</label>
               <input
@@ -42,6 +53,7 @@ const Home = () => {
                 noValidate
               />
             </div>
+
             <div className="birthDate">
               <label htmlFor="birthDate">Birth</label>
               <InputMask
@@ -52,7 +64,8 @@ const Home = () => {
                 value={birth}
                 noValidate
               />
-            </div>            
+            </div>   
+
             <div className="cpf">
               <label htmlFor="cpf">CPF</label>
               <InputMask
@@ -64,6 +77,36 @@ const Home = () => {
                 noValidate
               />
             </div>
+
+            <div className="address">
+              <label htmlFor="address">Address</label>
+              <input
+                placeholder="Address"
+                type="text"
+                name="address"
+                onChange={(address) => setAddress(address.target.value)}
+                value={address}
+                noValidate
+              />
+            </div>
+
+            <div className="deliveryNumber">
+              <label htmlFor="deliveryNumber">Number</label>
+              <input
+                placeholder="Number"
+                type="number"
+                name="deliveryNumber"
+                onChange={(deliveryNumber) => setDeliveryNumber(deliveryNumber.target.value)}
+                value={deliveryNumber}
+                noValidate
+              />
+            </div>
+
+            <div className="sex" onChange={setGender}>
+              <input type="radio" value="MALE" name="gender"/> Male
+              <input type="radio" value="FEMALE" name="gender"/> Female
+            </div>
+
             <div className="email">
               <label htmlFor="email">Email</label>
               <input
@@ -75,6 +118,7 @@ const Home = () => {
                 noValidate
               />
             </div>
+
             <div className="password">
               <label htmlFor="password">Password</label>
               <input
@@ -86,9 +130,9 @@ const Home = () => {
                 noValidate
               />
             </div>
+
             <div className="createAccount">
               <button type="submit">Create Account</button>
-              <small>Already Have an Account?</small>
             </div>
           </form>
         </div>

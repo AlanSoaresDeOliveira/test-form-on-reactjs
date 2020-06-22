@@ -38,8 +38,7 @@ h1 {
   width: 100%;
   color: #111;
   font-weight: lighter;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 label {
@@ -47,6 +46,7 @@ label {
   margin-bottom: 0.25em;
   color: #222;
   font-weight: lighter;
+  font-family: 'Roboto', sans-serif;
 }
 
 input {
@@ -54,6 +54,7 @@ input {
   border-radius: 5px;
   outline: none;
   border: 1px solid #cfcfcf;
+  font-family: 'Roboto', sans-serif;
 }
 
 input::placeholder {
@@ -73,12 +74,14 @@ input.error {
 }
 
 .firstName,
-.birthDate {
+.birthDate,
+.address {
   margin-right: 1%;
 }
 
 .lastName,
-.cpf {
+.cpf,
+.deliveryNumber {
   margin-left: 1%;
 }
 
@@ -86,10 +89,15 @@ input.error {
 .birthDate,
 .cpf,
 .lastName,
+.address,
+.deliveryNumber,
 .email,
 .password {
   display: flex;
   flex-direction: column;
+  margin-bottom: 15px;
+}
+.sex {
   margin-bottom: 15px;
 }
 
@@ -98,6 +106,14 @@ input.error {
 .cpf,
 .lastName {
   width: 49%;
+}
+
+.address {
+  width: 64%;
+}
+
+.deliveryNumber {
+  width: 34%;
 }
 
 .email,
@@ -110,11 +126,13 @@ input.error {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 10px;
 }
 
 .createAccount button {
   background-color: #519e8a;
   color: #fff;
+  border-radius: 5px;
   border: 2px solid #fff;
   width: 100%;
   margin-top: 1em;
@@ -129,9 +147,4 @@ input.error {
   color: #519e8a;
   background-color: #fff;
   border: 2px solid #519e8a;
-}
-
-.createAccount small {
-  color: #999;
-  font-weight: lighter;
 }
